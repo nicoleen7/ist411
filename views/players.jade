@@ -1,22 +1,47 @@
+extends layout
 
 block content
   h1= title
-  -for (var i = 0 ; i < content.length; i++){
-  li
-    a(href="/players/update/#{content[i]['id']}") #{content[i]["firstName"]} #{content[i]["lastName"]} #{content[i]["age"]} | 
-    form(method='POST', action="/players/delete/#{content[i]['id']}")
-            button(type='submit') Delete
-  -}
-
-form(method="POST", action="")
+  br
+  h3 Click a player to update their information
+    br
+    br
+  .list-group
+    -if (content.length > 0){
+    -for (var i = 0 ; i < content.length; i++){
+      p.ok
+        a.list-group-item.list-group-item-action(href="/players/update/#{content[i]['id']}") #{content[i]["firstName"]} #{content[i]["lastName"]} #{content[i]["age"]} 
+        form(method='POST', action="/players/delete/#{content[i]['id']}")
+                button(class="btn btn-danger" type='submit') Delete
+    -}}
+    -else{
+      p The list is empty
+    -}
+    br
+    .form-group
+      form(method="POST", action="")
         div.input
             span.label First Name
-            input(type="text", name="firstName")
             br
+          .form-control
+            input(style="border:none", type="text", name="firstName", placeholder="John")
+            br
+            br
+        div.input
             span.label Last Name
-            input(type="text", name="lastName")
             br
+          .form-control
+            input(style="border:none", type="text", name="lastName", placeholder="Doe")
+            br
+            br
+        div.input
             span.label Age
-            input(type="text", name="age")
+            br
+          .form-control
+            input(style="border:none", type="text", name="age", placeholder="27")
+            br
+            br
+            br
         div.actions
-            input(type="submit", value="submit")
+            br
+            input(class="btn btn-primary", type="submit", value="submit")

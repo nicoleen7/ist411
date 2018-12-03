@@ -144,7 +144,7 @@ function deletePlayers(id, res, data){
 				conn.end(function(err){
 					if (err) throw err;
 					else console.log("done");
-					getPlayers(res, {})
+					res.redirect('/players');
 				});
 			}
 		}
@@ -160,7 +160,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/update/:id', function(req, res, next) {
 	console.log(req.params["id"])
-	res.render('update');
+	res.render('update', {id:req.params["id"]});
   });
 
   router.post('/update/:id', function(req, res, next) {

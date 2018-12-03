@@ -1,15 +1,29 @@
+extends layout
 
 block content
 
-form(method="POST", action="")
+    h3 Update Player with ID: #{id}
+    br
+    .form-group
+      form(method="POST", action="")
         div.input
             span.label First Name
-            input(type="text", name="firstName")
             br
+          .form-control
+            input(style="border:none", type="text", name="firstName", placeholder="John")
+            br
+        div.input
             span.label Last Name
-            input(type="text", name="lastName")
             br
+          .form-control
+            input(style="border:none", type="text", name="lastName", placeholder="Doe")
+            br
+        div.input
             span.label Age
-            input(type="text", name="age")
+            br
+          .form-control
+            input(style="border:none", type="text", name="age", placeholder="27")
+            br
         div.actions
-            input(type="submit", value="submit")
+            br
+            input(class="btn btn-primary", type="submit", value="submit")
