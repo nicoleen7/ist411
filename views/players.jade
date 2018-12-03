@@ -1,0 +1,22 @@
+
+block content
+  h1= title
+  -for (var i = 0 ; i < content.length; i++){
+  li
+    a(href="/players/update/#{content[i]['id']}") #{content[i]["firstName"]} #{content[i]["lastName"]} #{content[i]["age"]} | 
+    form(method='POST', action="/players/delete/#{content[i]['id']}")
+            button(type='submit') Delete
+  -}
+
+form(method="POST", action="")
+        div.input
+            span.label First Name
+            input(type="text", name="firstName")
+            br
+            span.label Last Name
+            input(type="text", name="lastName")
+            br
+            span.label Age
+            input(type="text", name="age")
+        div.actions
+            input(type="submit", value="submit")
