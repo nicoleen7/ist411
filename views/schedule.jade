@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    h1= title
+    br
+    h3 Enter a date for the NHL schedule
+    a(href="/players") Players
+    br
+    br
+    .form-group
+    form(method="POST", action="")
+        div.input
+                span.label Month
+                br
+            .form-control
+                input(style="border:none", type="text", name="Month")
+                br
+                br
+        div.input
+                span.label Day
+                br
+            .form-control
+                input(style="border:none", type="text", name="Day")
+                br
+                br
+        div.input
+                span.label Year
+                br
+            .form-control
+                input(style="border:none", type="text", name="Year")
+                br
+        div.actions
+                input(class="btn btn-primary", type="submit", value="submit")
+
+    br
+    -if(data==undefined){
+        p No Search Entered
+    -}else{
+        -for (var i = 0 ; i < data.length; i++){
+        li.list-group-item:| Home Team: #{data[i]["home"]["name"]} /VS/ Away Team: #{data[i]["away"]["name"]}
+        br
+        -}
+    -}

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/players');
+var scheduleRouter = require('./routes/schedule');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/', usersRouter);
 app.use('/players', usersRouter);
+app.use('/schedule', scheduleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
